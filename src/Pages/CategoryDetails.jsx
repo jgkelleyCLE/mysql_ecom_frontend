@@ -21,7 +21,7 @@ const CategoryDetails = () => {
 
   // Fallback: manually set document title
   useEffect(() => {
-    document.title = `${decodedCategory} | Tentlify`;
+    document.title = `${decodedCategory} | SQL Rentals`;
   }, [decodedCategory]);
 
   let content;
