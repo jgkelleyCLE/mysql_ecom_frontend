@@ -36,7 +36,10 @@ const Navbar = () => {
         {user ? (
           <UserDropdown user={user} />
         ) : (
-          <Link to="/auth" className={`text-xl ${location.pathname === '/auth' ? 'text-sqlBlueLight' : 'text-white'}`}>
+          <Link
+            to="/auth"
+            className={`ml-2 text-xl ${location.pathname === '/auth' ? 'text-sqlBlueLight' : 'text-white'}`}
+          >
             Login
           </Link>
         )}
