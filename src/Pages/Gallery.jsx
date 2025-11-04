@@ -19,7 +19,7 @@ const Gallery = () => {
 
   return (
     <>
-      <title>Gallery | Tentlify</title>
+      <title>Gallery | SQL Rentals</title>
       <PageContainer>
         <div className="flex flex-col items-center">
           <iframe

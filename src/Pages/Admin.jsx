@@ -5,7 +5,7 @@ import AdminTabs from '../components/Admin/AdminTabs';
 const Admin = () => {
   return (
     <>
-      <title>Admin Panel | Tentlify</title>
+      <title>Admin Panel | SQL Rentals</title>
       <PageContainer>
         <PageHeader>Admin</PageHeader>
         <AdminTabs />

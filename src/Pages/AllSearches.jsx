@@ -35,10 +35,13 @@ const AllSearches = () => {
   }
 
   return (
-    <PageContainer>
-      <PageHeader>All Searches</PageHeader>
-      <div className="mx-8">{content}</div>
-    </PageContainer>
+    <>
+      <title>Search History | SQL Rentals</title>
+      <PageContainer>
+        <PageHeader>All Searches</PageHeader>
+        <div className="mx-8">{content}</div>
+      </PageContainer>
+    </>
   );
 };
 

@@ -5,13 +5,16 @@ import AuthTabs from '../components/Auth/AuthTabs';
 
 const Auth = () => {
   return (
-    <PageContainer>
-      <PageHeader>Auth</PageHeader>
-      <FlexColumn>
-        <AuthTabs />
-        {/* <RegisterForm /> */}
-      </FlexColumn>
-    </PageContainer>
+    <>
+      <title>Login | SQL Rentals </title>
+      <PageContainer>
+        <PageHeader>Auth</PageHeader>
+        <FlexColumn>
+          <AuthTabs />
+          {/* <RegisterForm /> */}
+        </FlexColumn>
+      </PageContainer>
+    </>
   );
 };
 

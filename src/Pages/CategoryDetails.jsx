@@ -38,7 +38,7 @@ const CategoryDetails = () => {
 
   return (
     <>
-      <title>{decodedCategory ? decodedCategory : 'Tentlify'} | Tentlify</title>
+      <title>{decodedCategory ? decodedCategory : 'Tentlify'} | SQL Rentals</title>
       <PageContainer>
         <PageHeader>{Category}</PageHeader>
         <CategoryGrid>{content}</CategoryGrid>

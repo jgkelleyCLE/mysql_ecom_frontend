@@ -14,7 +14,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (user) {
-      document.title = `${user?.user?.username}'s Profile | Tentlify`;
+      document.title = `${user?.user?.username}'s Profile | SQL Rentals`;
     }
   }, [user]);
 
@@ -26,7 +26,7 @@ const Profile = () => {
 
   return (
     <>
-      <title>{user?.user?.username} | Tentlify</title>
+      <title>{user?.user?.username} | SQL Rentals</title>
       <PageContainer>
         <PageHeader>Profile</PageHeader>
         <FlexColumn>

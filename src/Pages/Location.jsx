@@ -6,7 +6,7 @@ import { MapContainer } from '../components/UI';
 const Location = () => {
   return (
     <>
-      <title>Location | Tentlify</title>
+      <title>Location | SQL Rentals</title>
       <MapContainer>
         <Map
           mapboxAccessToken="pk.eyJ1IjoiamFja2lld2ViZGV2IiwiYSI6ImNsdjFoeWlzdzA1NWIydGxkNDZnM2V6NGcifQ.ob63OSXlq8HcLLTYHRirbw"

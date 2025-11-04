@@ -48,33 +48,36 @@ const OrderDetails = () => {
   }
 
   return (
-    <PageContainer>
-      <FlexRow>
-        {' '}
-        <PageHeader className="text-xl">Order Details - {order ? order[0].title : null}</PageHeader>{' '}
-      </FlexRow>
-      {content}
+    <>
+      <title>Order Details | SQL Rentals</title>
+      <PageContainer>
+        <FlexRow>
+          {' '}
+          <PageHeader className="text-xl">Order Details - {order ? order[0].title : null}</PageHeader>{' '}
+        </FlexRow>
+        {content}
 
-      <div>
-        {orderItems?.map((item) => (
-          <div
-            key={item.product_id}
-            className="flex flex-row items-center justify-between border-b border-gray-200 p-4 w-11/12 mx-auto"
-          >
-            <div className="flex flex-row items-center">
-              <img src={item.image} alt={item.product} className="w-20 h-20 object-contain" />
-              <div className="ml-4">
-                <p className="text-md md:text-xl font-bold">{item.product}</p>
-                <p className="text-sm italic">Qty: {item.quantity}</p>
+        <div>
+          {orderItems?.map((item) => (
+            <div
+              key={item.product_id}
+              className="flex flex-row items-center justify-between border-b border-gray-200 p-4 w-11/12 mx-auto"
+            >
+              <div className="flex flex-row items-center">
+                <img src={item.image} alt={item.product} className="w-20 h-20 object-contain" />
+                <div className="ml-4">
+                  <p className="text-md md:text-xl font-bold">{item.product}</p>
+                  <p className="text-sm italic">Qty: {item.quantity}</p>
+                </div>
               </div>
+              <p className="text-md md:text-xl font-bold">
+                ${item.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </p>
             </div>
-            <p className="text-md md:text-xl font-bold">
-              ${item.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-            </p>
-          </div>
-        ))}
-      </div>
-    </PageContainer>
+          ))}
+        </div>
+      </PageContainer>
+    </>
   );
 };
 

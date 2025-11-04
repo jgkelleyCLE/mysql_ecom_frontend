@@ -12,8 +12,6 @@ const SearchResults = () => {
 
   const user = useSelector((state) => state.auth.user);
 
-  console.log('USER on search: ', user.user.user_id);
-
   const { data: searchData, isLoading, isSuccess, isError, error } = useSearchProductsQuery(query);
 
   const [createSearch] = useCreateSearchMutation();
@@ -37,6 +35,8 @@ const SearchResults = () => {
 
   useEffect(() => {
     if (query && searchData) {
+      document.title = `"${query}" | SQL Rentals`;
+
       console.log('SEARCH DATA: ', searchData?.product_id);
       createSearch({
         term: query,
@@ -48,13 +48,15 @@ const SearchResults = () => {
   }, [query, searchData]);
 
   return (
-    <PageContainer>
-      <h1 className="text-3xl mb-2">Search results for "{query}": </h1>
-      {errorMessage}
-      <FlexColumn>
-        <GridContainer>{content}</GridContainer>
-      </FlexColumn>
-    </PageContainer>
+    <>
+      <PageContainer>
+        <h1 className="text-3xl mb-2">Search results for "{query}": </h1>
+        {errorMessage}
+        <FlexColumn>
+          <GridContainer>{content}</GridContainer>
+        </FlexColumn>
+      </PageContainer>
+    </>
   );
 };
 

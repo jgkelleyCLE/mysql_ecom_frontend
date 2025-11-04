@@ -9,8 +9,6 @@ const SearchDetails = () => {
 
   const { data: products, isLoading, isSuccess, isError, error } = useGetSearchDetailsQuery(id);
 
-  console.log('PRODUCTS: ', products);
-
   let content;
 
   if (isLoading) {
@@ -45,10 +43,13 @@ const SearchDetails = () => {
   }
 
   return (
-    <PageContainer>
-      <PageHeader>Search Details ({products?.length})</PageHeader>
-      {content}
-    </PageContainer>
+    <>
+      <title></title>
+      <PageContainer>
+        <PageHeader>Search Details ({products?.length})</PageHeader>
+        {content}
+      </PageContainer>
+    </>
   );
 };
 

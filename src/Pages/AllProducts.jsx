@@ -4,7 +4,7 @@ import CategoryCard from '../components/Category/CategoryCard';
 const AllProducts = () => {
   return (
     <>
-      <title>Products | Tentlify</title>
+      <title>Products | SQL Rentals</title>
       <PageContainer>
         <CategoryGridContainer>
           <CategoryCard

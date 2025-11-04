@@ -41,7 +41,7 @@ const Home = () => {
 
   return (
     <>
-      <title>Home | Tentlify</title>
+      <title>Home | SQL Rentals</title>
       <div className="flex items-center justify-center h-screen relative">
         <div className="absolute top-0 left-0 w-full h-[100vh] bg-black/50 z-10"></div>
         <img

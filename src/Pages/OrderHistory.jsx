@@ -54,18 +54,21 @@ const OrderHistory = () => {
   }
 
   return (
-    <PageContainer>
-      <FlexRow>
-        <PageHeader>Order History</PageHeader>
-      </FlexRow>
-      <FlexColumn>
-        {orders?.length === 0 ? (
-          <h1 className="mt-6 md:text-xl italic">You have not placed any orders yet.</h1>
-        ) : (
-          content
-        )}
-      </FlexColumn>
-    </PageContainer>
+    <>
+      <title>Order History | SQL Rentals</title>
+      <PageContainer>
+        <FlexRow>
+          <PageHeader>Order History</PageHeader>
+        </FlexRow>
+        <FlexColumn>
+          {orders?.length === 0 ? (
+            <h1 className="mt-6 md:text-xl italic">You have not placed any orders yet.</h1>
+          ) : (
+            content
+          )}
+        </FlexColumn>
+      </PageContainer>
+    </>
   );
 };
 

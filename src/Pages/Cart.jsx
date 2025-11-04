@@ -42,7 +42,7 @@ const Cart = () => {
 
   return (
     <>
-      <title>Cart | Tentlify</title>
+      <title>Cart | SQL Rentals</title>
       <meta name="description" content={`Shopping cart with ${cartList.length} items totaling $${total.toFixed(2)}`} />
       <meta property="og:title" content={`Cart (${cartList.length}) - Your Store`} />
       <meta property="og:description" content={`Shopping cart with ${cartList.length} items`} />
