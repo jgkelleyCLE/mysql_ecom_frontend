@@ -62,6 +62,8 @@ const EmailModal = ({ subtotal, deliveryFee, taxPrice, total }) => {
       toast.error('Email required.');
     } else if (!selected) {
       toast.error('Date required.');
+    } else if (!user) {
+      toast.error('You must be logged in to submit an order!');
     } else {
       emailHandler(cart, subtotal, deliveryFee, taxPrice, total, email, selected, title);
 
