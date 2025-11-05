@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const searchApi = createApi({
     reducerPath: 'searchApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001',
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://ecombackendsafari.up.railway.app',
         prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.user?.token
         if (token) {
