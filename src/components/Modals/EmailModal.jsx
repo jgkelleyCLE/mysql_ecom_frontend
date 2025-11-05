@@ -23,7 +23,6 @@ const EmailModal = ({ subtotal, deliveryFee, taxPrice, total }) => {
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.auth.user);
-  console.log('USER ID: ', user.user.user_id);
 
   const cart = useSelector((state) => state.cart.cartList);
 
@@ -68,7 +67,7 @@ const EmailModal = ({ subtotal, deliveryFee, taxPrice, total }) => {
 
       if (title && email && selected) {
         createOrder({
-          user_id: user.user.user_id,
+          user_id: user?.user?.user_id,
           title,
           cart,
           event_date: selected,

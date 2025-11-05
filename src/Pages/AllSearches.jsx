@@ -8,8 +8,6 @@ const AllSearches = () => {
 
   let content;
 
-  console.log('SEARCHES: ', searches);
-
   if (isLoading) {
     content = (
       <FlexColumn>

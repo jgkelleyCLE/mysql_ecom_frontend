@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const orderApi = createApi({
     reducerPath: 'orderApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'ecombackendsafari.up.railway.app',
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://ecombackendsafari.up.railway.app',
         prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.user?.token
         if (token) {

@@ -10,8 +10,6 @@ import ProductStatusSelect from '../Select/ProductStatusSelect';
 const AllProducts = () => {
   const { data: products, isLoading, isSuccess, isError, error } = useGetProductsQuery();
 
-  console.log(products);
-
   let content;
 
   if (isLoading) {

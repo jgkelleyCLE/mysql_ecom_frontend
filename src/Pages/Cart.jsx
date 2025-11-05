@@ -14,8 +14,6 @@ import EmailModal from '../components/Modals/EmailModal';
 const Cart = () => {
   const cartList = useSelector((state) => state.cart.cartList || []);
 
-  console.log('LENGTH: ', cartList.length);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

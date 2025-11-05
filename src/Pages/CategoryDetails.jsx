@@ -8,16 +8,10 @@ import ProductCard from '../components/Products/ProductCard';
 const CategoryDetails = () => {
   const { Category } = useParams();
 
-  console.log(Category);
-
   // Decode the URL parameter
   const decodedCategory = Category ? decodeURIComponent(Category) : 'Products';
 
-  console.log('Raw Category:', Category);
-  console.log('Decoded Category:', decodedCategory);
   const { data: products, isLoading, isSuccess, isError, error } = useGetProductsByCategoryQuery(Category);
-
-  console.log(products);
 
   // Fallback: manually set document title
   useEffect(() => {

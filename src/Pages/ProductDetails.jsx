@@ -23,8 +23,6 @@ const ProductDetails = () => {
   const productImage = productData?.image || '';
   const productDescription = `${productTitle} - ${productPrice} | Your Store Name`;
 
-  console.log(product);
-
   const cartHandler = (product) => {
     console.log('PRODUCT: ', product);
     if (quantity === '') {
