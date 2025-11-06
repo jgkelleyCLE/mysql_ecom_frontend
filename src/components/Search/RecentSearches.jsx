@@ -22,7 +22,9 @@ const RecentSearches = ({ searches, isLoading, isSuccess }) => {
         onClick={() => navigate(`/search/${item.search_id}`)}
       >
         <h1 className="flex-[0.5] min-w-0 truncate">"{item.term}"</h1>
-        <div className="flex flex-col items-start flex-shrink-0 w-32 ">
+
+        {/* time searched and user info */}
+        <div className="hidden md:flex flex-col items-start flex-shrink-0 w-32 ">
           <span className="text-gray-400 italic text-xs">
             <Time value={item.created_at} format="MM/DD/YYYY hh:mm" />{' '}
           </span>

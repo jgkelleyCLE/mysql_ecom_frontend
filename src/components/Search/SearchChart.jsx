@@ -26,16 +26,18 @@ const SearchChart = ({ searches, isLoading, isSuccess }) => {
 
   return (
     <>
-      Search Chart
-      <ResponsiveContainer width={'100%'} height={300}>
-        <BarChart data={topSearches}>
-          <XAxis dataKey="term" />
-          <YAxis />
-          <Tooltip labelStyle={{ color: 'red' }} contentStyle={{ borderRadius: 10 }} />
-          {/* <Bar dataKey="count" fill="#8884d8" /> */}
-          <Bar dataKey="count" fill="#00618a" />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="bg-gray-200 dark:bg-gray-700 rounded-md p-3 flex flex-col">
+        <h1 className="mx-auto md:text-2xl font-bold">Most Popular Searches</h1>
+        <ResponsiveContainer width={'100%'} height={300} className="">
+          <BarChart data={topSearches}>
+            <XAxis dataKey="term" />
+            <YAxis />
+            <Tooltip labelStyle={{ color: 'red' }} contentStyle={{ borderRadius: 10 }} />
+            {/* <Bar dataKey="count" fill="#8884d8" /> */}
+            <Bar dataKey="count" fill="#00618a" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </>
   );
 };

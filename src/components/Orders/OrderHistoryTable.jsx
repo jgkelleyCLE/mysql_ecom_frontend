@@ -25,9 +25,9 @@ const OrderHistoryTable = () => {
     );
   } else if (isSuccess) {
     content = orders?.map((item) => (
-      <TableRow key={item.order_id}>
-        <TableCell className="font-medium">{item.title}</TableCell>
-        <TableCell>
+      <TableRow key={item.order_id} className="">
+        <TableCell className="font-medium py-4">{item.title}</TableCell>
+        <TableCell className="hidden md:table-cell">
           <Time value={item.created_at} format="MM/DD/YYYY" />
         </TableCell>
         <TableCell>
@@ -59,7 +59,7 @@ const OrderHistoryTable = () => {
           <TableHeader>
             <TableRow>
               <TableHead className="">Title</TableHead>
-              <TableHead>Created</TableHead>
+              <TableHead className="hidden md:table-cell">Created</TableHead>
               <TableHead>Event Date</TableHead>
 
               <TableHead className="">Amount</TableHead>

@@ -28,7 +28,7 @@ const UserDropdown = ({ user }) => {
           style={{ backgroundColor: color }}
           className=" w-10 h-10 rounded-full flex flex-col items-center justify-center"
         >
-          <p className="text-xl">{user?.user?.username?.charAt(0).toUpperCase()}</p>
+          <p className="text-xl text-black">{user?.user?.username?.charAt(0).toUpperCase()}</p>
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

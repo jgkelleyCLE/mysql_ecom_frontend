@@ -18,7 +18,7 @@ const ColorChooser = ({ formData, color, setColor }) => {
         style={{ backgroundColor: color }}
         className={`h-20 w-20 rounded-full shadow-lg flex flex-col items-center justify-center`}
       >
-        <p className="text-3xl">{username ? username : '#'}</p>
+        <p className="text-3xl text-black">{username ? username : '#'}</p>
       </div>
       <input className="w-full mt-2" type="color" value={color} onChange={(e) => setColor(e.target.value)} />
       {/* <p className="text-xs text-gray-400 italic -mt-1">Click to select color</p> */}

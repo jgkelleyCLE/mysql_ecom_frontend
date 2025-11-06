@@ -17,7 +17,7 @@ const AdminSearch = () => {
       ) : (
         <>
           <SearchChart searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
-          <FlexRow>
+          <FlexRow className="flex flex-col md:flex-row mt-4">
             <RecentSearches searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
             <PopularSearches searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
           </FlexRow>

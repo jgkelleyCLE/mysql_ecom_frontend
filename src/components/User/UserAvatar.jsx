@@ -19,9 +19,9 @@ const UserAvatar = ({ user, open, setOpen }) => {
     >
       <div className="flex items-center justify-start gap-2">
         <div style={{ backgroundColor: color }} className={`rounded-full w-8 h-8 flex items-center justify-center`}>
-          <h1>{user?.user?.username.charAt(0).toUpperCase()}</h1>
+          <h1 className="text-black">{user?.user?.username.charAt(0).toUpperCase()}</h1>
         </div>
-        <h1>{user?.user?.username}</h1>
+        <h1 className="text-white">{user?.user?.username}</h1>
       </div>
       <FaChevronRight />
     </div>

@@ -23,18 +23,20 @@ const AllOrders = () => {
   } else if (isSuccess) {
     content = orders?.map((item) => (
       <TableRow key={item.order_id}>
-        <TableCell className="font-medium">{item.title}</TableCell>
+        <TableCell className="font-medium w-24 md:w-auto break-words md:break-normal whitespace-normal">
+          {item.title}
+        </TableCell>
         <TableCell>
           <Time value={item.created_at} format="MM/DD/YYYY" />
         </TableCell>
-        <TableCell>
+        <TableCell className="hidden md:table-cell">
           <Time value={item.event_date} format="MM/DD/YYYY" />
         </TableCell>
         {/* <TableCell>{item.order_status}</TableCell> */}
         <TableCell>
           <OrderStatusSelect item={item} />
         </TableCell>
-        <TableCell className="">
+        <TableCell className="hidden md:table-cell">
           ${Number(item.total_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
         </TableCell>
         <TableCell className="">
@@ -57,11 +59,11 @@ const AllOrders = () => {
           <TableCaption>A list of all orders.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="">Title</TableHead>
+              <TableHead className="w-24 md:w-auto">Title</TableHead>
               <TableHead>Created</TableHead>
-              <TableHead>Event Date</TableHead>
+              <TableHead className="hidden md:table-cell">Event Date</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="">Amount</TableHead>
+              <TableHead className="hidden md:table-cell">Amount</TableHead>
               <TableHead className="">Link</TableHead>
             </TableRow>
           </TableHeader>

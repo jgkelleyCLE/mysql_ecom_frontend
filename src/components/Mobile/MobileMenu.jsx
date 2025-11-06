@@ -111,7 +111,7 @@ const MobileMenu = ({ user }) => {
               className="flex items-center justify-between p-3 w-full border-2 border-white rounded-md cursor-pointer hover:bg-gray-700/50 transition duration-300"
             >
               <div className="flex items-center justify-start my-1 gap-2">
-                <h1>Admin Panel</h1>
+                <h1 className="text-white">Admin Panel</h1>
               </div>
               <FaChevronRight />
             </div>

@@ -27,16 +27,16 @@ const AllProducts = () => {
         key={item.product_id}
         className={`${item.status === 'Inactive' ? 'bg-red-100 dark:bg-red-950 hover:bg-red-200' : null}`}
       >
-        <TableCell className="font-medium">
+        <TableCell className="font-medium hidden md:table-cell">
           <img className="w-20" src={item.image} alt={item.product} />
         </TableCell>
         <TableCell>{item.product}</TableCell>
-        <TableCell>{item.category}</TableCell>
+        <TableCell className="hidden md:table-cell">{item.category}</TableCell>
         {/* <TableCell>{item.status}</TableCell> */}
         <TableCell>
           <ProductStatusSelect item={item} />
         </TableCell>
-        <TableCell className="">
+        <TableCell className="hidden md:table-cell">
           {Number(item.price).toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD',
@@ -67,11 +67,11 @@ const AllProducts = () => {
             <TableCaption>A list of all products.</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead className="">Image</TableHead>
+                <TableHead className="hidden md:table-cell">Image</TableHead>
                 <TableHead>Product</TableHead>
-                <TableHead>Category</TableHead>
+                <TableHead className="hidden md:table-cell">Category</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead className="">Amount</TableHead>
+                <TableHead className="hidden md:table-cell">Amount</TableHead>
                 <TableHead className="">Edit</TableHead>
               </TableRow>
             </TableHeader>
