@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { LuMenu } from 'react-icons/lu';
-import { FlexColumn } from '../UI';
+import { FlexColumn, FlexRow } from '../UI';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import UserAvatar from '../User/UserAvatar';
+import { FaChevronRight } from 'react-icons/fa';
 
 //user passed in from navbar
 const MobileMenu = ({ user }) => {
@@ -48,19 +49,24 @@ const MobileMenu = ({ user }) => {
     setOpen(false);
   };
 
+  const adminHandler = () => {
+    navigate('/admin');
+    setOpen(false);
+  };
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="md:hidden text-white">
         <LuMenu className="text-3xl cursor-pointer" />
       </SheetTrigger>
-      <SheetContent side="left" className="bg-[#090c25]">
+      <SheetContent side="left" className="bg-[#090c25] overflow-y-auto max-h-screen">
         <SheetHeader>
           <FlexColumn>
             <Link onClick={homeHandler}>
               <img
                 alt="Tentlify Rentals"
                 src="https://firebasestorage.googleapis.com/v0/b/mern-ecommerce-f07b1.appspot.com/o/Tenlify_Logo_Thin_Small.png?alt=media&token=59587449-7b7c-439f-a434-5b4059035b11"
-                className="w-[150px]"
+                className="w-[150px] -mb-12"
               />
             </Link>
           </FlexColumn>
@@ -99,7 +105,18 @@ const MobileMenu = ({ user }) => {
             />
             <h1 className="text-white text-2xl font-bold absolute left-2 bottom-0 z-30">Gallery</h1>
           </div>
-          {user ? <UserAvatar user={user} open={open} setOpen={setOpen} /> : null}
+          <div className="w-full flex flex-col gap-2">
+            <div
+              onClick={adminHandler}
+              className="flex items-center justify-between p-3 w-full border-2 border-white rounded-md cursor-pointer hover:bg-gray-700/50 transition duration-300"
+            >
+              <div className="flex items-center justify-start my-1 gap-2">
+                <h1>Admin Panel</h1>
+              </div>
+              <FaChevronRight />
+            </div>
+            {user ? <UserAvatar user={user} open={open} setOpen={setOpen} /> : null}
+          </div>
         </FlexColumn>
       </SheetContent>
     </Sheet>

@@ -58,8 +58,6 @@ const RegisterForm = () => {
       }
       data = await res.json();
 
-      console.log('ZIP DATA: ', data);
-
       if (data.places?.length > 0) {
         setFormData((prev) => ({
           ...prev,

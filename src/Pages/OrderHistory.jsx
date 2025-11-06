@@ -6,6 +6,7 @@ import PageSpinner from '../components/Misc/PageSpinner';
 import Time from 'react-time-format';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import OrderHistoryTable from '../components/Orders/OrderHistoryTable';
 
 const OrderHistory = () => {
   const user = useSelector((state) => state.auth.user);
@@ -60,13 +61,16 @@ const OrderHistory = () => {
         <FlexRow>
           <PageHeader>Order History</PageHeader>
         </FlexRow>
-        <FlexColumn>
+        {/* <FlexColumn>
           {orders?.length === 0 ? (
             <h1 className="mt-6 md:text-xl italic">You have not placed any orders yet.</h1>
           ) : (
             content
           )}
-        </FlexColumn>
+        </FlexColumn> */}
+        <div className="w-11/12 mx-auto">
+          <OrderHistoryTable />
+        </div>
       </PageContainer>
     </>
   );

@@ -35,6 +35,13 @@ const CategoryDetails = () => {
       <title>{decodedCategory ? decodedCategory : 'Tentlify'} | SQL Rentals</title>
       <PageContainer>
         <PageHeader>{Category}</PageHeader>
+        {isError ? (
+          <FlexColumn>
+            <p className="md:text-xl italic mt-6 mx-8">
+              Error fetching {Category}: {error?.data?.message}
+            </p>
+          </FlexColumn>
+        ) : null}
         <CategoryGrid>{content}</CategoryGrid>
       </PageContainer>
     </>

@@ -10,7 +10,7 @@ const OrderDetails = () => {
 
   const { data: order, isLoading, isSuccess, isError, error } = useGetOrderByIdQuery(id);
 
-  console.log(order);
+  console.log('ORDER: ', order);
 
   const { data: orderItems } = useGetOrderItemsQuery(id);
 

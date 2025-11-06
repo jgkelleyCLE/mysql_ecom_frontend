@@ -1,14 +1,17 @@
 import React from 'react';
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { useGetOrdersQuery } from '../../redux/orderApi';
-import { FlexColumn } from '../UI';
+import { useNavigate } from 'react-router-dom';
 import PageSpinner from '../Misc/PageSpinner';
-import { Link } from 'react-router-dom';
 import Time from 'react-time-format';
-import OrderStatusSelect from '../Select/OrderStatusSelect';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useSelector } from 'react-redux';
+import { useGetUserOrdersQuery } from '../../redux/orderApi';
+import { Link } from 'react-router-dom';
 
-const AllOrders = () => {
-  const { data: orders, isLoading, isSuccess, isError, error } = useGetOrdersQuery();
+const OrderHistoryTable = () => {
+  const user = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
+
+  const { data: orders, isLoading, isSuccess, isError, error } = useGetUserOrdersQuery(user?.user?.user_id);
 
   let content;
 
@@ -31,9 +34,7 @@ const AllOrders = () => {
           <Time value={item.event_date} format="MM/DD/YYYY" />
         </TableCell>
         {/* <TableCell>{item.order_status}</TableCell> */}
-        <TableCell>
-          <OrderStatusSelect item={item} />
-        </TableCell>
+
         <TableCell className="">
           ${Number(item.total_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
         </TableCell>
@@ -54,22 +55,28 @@ const AllOrders = () => {
         </FlexColumn>
       ) : (
         <Table>
-          <TableCaption>A list of all orders.</TableCaption>
+          <TableCaption>A list of all your orders.</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead className="">Title</TableHead>
               <TableHead>Created</TableHead>
               <TableHead>Event Date</TableHead>
-              <TableHead>Status</TableHead>
+
               <TableHead className="">Amount</TableHead>
               <TableHead className="">Link</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>{content}</TableBody>
+          <TableBody>
+            {orders?.length === 0 ? (
+              <h1 className="mt-6 md:text-xl italic">You have not placed any orders yet.</h1>
+            ) : (
+              content
+            )}
+          </TableBody>
         </Table>
       )}
     </div>
   );
 };
 
-export default AllOrders;
+export default OrderHistoryTable;

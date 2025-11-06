@@ -27,7 +27,7 @@ const Navbar = () => {
           />
           <img
             src="https://images.icon-icons.com/2415/PNG/512/mysql_plain_wordmark_logo_icon_146415.png"
-            className="w-[75px] absolute top-2 -right-16"
+            className="w-[48px] md:w-[75px] absolute top-2 -right-11 md:-right-17"
           />
         </div>
       </Link>

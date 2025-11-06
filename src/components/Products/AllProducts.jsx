@@ -6,6 +6,7 @@ import Time from 'react-time-format';
 import { Link } from 'react-router-dom';
 import EditProductModal from '../Modals/EditProductModal';
 import ProductStatusSelect from '../Select/ProductStatusSelect';
+import { FlexColumn } from '../UI';
 
 const AllProducts = () => {
   const { data: products, isLoading, isSuccess, isError, error } = useGetProductsQuery();
@@ -53,21 +54,32 @@ const AllProducts = () => {
 
   return (
     <div>
-      <p className="italic text-red-500 text-sm">Inactive products will not be shown in search or category pages.</p>
-      <Table>
-        <TableCaption>A list of all orders.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="">Image</TableHead>
-            <TableHead>Product</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="">Amount</TableHead>
-            <TableHead className="">Edit</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>{content}</TableBody>
-      </Table>
+      {isError ? (
+        <FlexColumn>
+          <p className="mt-6">Error fetching products: {error?.data?.message}</p>
+        </FlexColumn>
+      ) : (
+        <>
+          <p className="italic text-red-500 text-sm">
+            Inactive products will not be shown in search or category pages.
+          </p>
+          <Table>
+            <TableCaption>A list of all products.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="">Image</TableHead>
+                <TableHead>Product</TableHead>
+                <TableHead>Category</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="">Amount</TableHead>
+                <TableHead className="">Edit</TableHead>
+              </TableRow>
+            </TableHeader>
+
+            <TableBody>{content}</TableBody>
+          </Table>
+        </>
+      )}
     </div>
   );
 };

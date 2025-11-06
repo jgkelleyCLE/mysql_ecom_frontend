@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexRow } from '../UI';
+import { FlexColumn, FlexRow } from '../UI';
 import PopularSearches from './PopularSearches';
 import RecentSearches from './RecentSearches';
 import { useGetAllSearchesQuery } from '../../redux/searchApi';
@@ -10,11 +10,19 @@ const AdminSearch = () => {
 
   return (
     <div>
-      <SearchChart searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
-      <FlexRow>
-        <RecentSearches searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
-        <PopularSearches searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
-      </FlexRow>
+      {isError ? (
+        <FlexColumn>
+          <p className="mt-6">Error fetching search data: {error?.data?.message}</p>
+        </FlexColumn>
+      ) : (
+        <>
+          <SearchChart searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
+          <FlexRow>
+            <RecentSearches searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
+            <PopularSearches searches={searches} isLoading={isLoading} isSuccess={isSuccess} />
+          </FlexRow>
+        </>
+      )}
     </div>
   );
 };
