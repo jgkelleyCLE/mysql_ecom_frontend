@@ -6,6 +6,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { useSelector } from 'react-redux';
 import { useGetUserOrdersQuery } from '../../redux/orderApi';
 import { Link } from 'react-router-dom';
+import { FlexColumn } from '../../components/UI';
 
 const OrderHistoryTable = () => {
   const user = useSelector((state) => state.auth.user);
