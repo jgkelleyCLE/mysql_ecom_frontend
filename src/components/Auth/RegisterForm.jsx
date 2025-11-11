@@ -7,6 +7,7 @@ import ColorChooser from '../ColorPicker/ColorChooser';
 import { states } from '../../utils/stateData';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/userSlice';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const RegisterForm = () => {
   const getRandomColor = () => {
@@ -35,7 +36,7 @@ const RegisterForm = () => {
   const [long, setLong] = useState('');
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
+    password: '123456',
     city: '',
     state: '',
     zip: '',
@@ -104,6 +105,7 @@ const RegisterForm = () => {
     }
 
     if (isSuccess) {
+      console.log('REGISTER DATA: ', registerData);
       dispatch(setUser(registerData));
       toast.success('User succesfully created!');
       navigate('/');
@@ -121,12 +123,22 @@ const RegisterForm = () => {
               value={formData.username}
               onChange={(e) => setFormData({ ...formData, username: e.target.value })}
             />
-            <input
-              className="w-full bg-white p-2 rounded-md text-black"
-              placeholder="Password"
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            />
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <input
+                  className="w-full bg-white p-2 rounded-md text-black disabled:bg-gray-300 disabled:text-gray-500 italic cursor-not-allowed"
+                  placeholder="Password"
+                  disabled
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                />
+              </TooltipTrigger>
+              <TooltipContent side="bottom" style={{}}>
+                <div className="w-full ">
+                  <p className="text-lg">Password automatically set for security reasons.</p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
           </FlexColStart>
           <ColorChooser formData={formData} color={color} setColor={setColor} />
         </FlexRow>

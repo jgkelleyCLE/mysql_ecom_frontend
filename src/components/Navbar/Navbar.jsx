@@ -13,6 +13,8 @@ import { useLocation } from 'react-router-dom';
 const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
 
+  console.log('USER in NAV: ', user);
+
   const location = useLocation();
 
   return (

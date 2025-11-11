@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://ecombackendsafari.up.railway.app' }),
+    // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     tagTypes: ['User'],
     endpoints: (builder) => ({
         registerUser: builder.mutation({

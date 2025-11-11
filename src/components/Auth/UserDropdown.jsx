@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../redux/userSlice';
 
 const UserDropdown = ({ user }) => {
+  console.log('USER IN DROPDOWN: ', user);
+
   const color = user?.user?.bgColor;
   const dispatch = useDispatch();
   const navigate = useNavigate();
