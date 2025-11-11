@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { useGetOrdersQuery } from '../../redux/orderApi';
+import { useGetOrderItemsQuery, useGetOrdersQuery } from '../../redux/orderApi';
 import { FlexColumn } from '../UI';
 import PageSpinner from '../Misc/PageSpinner';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,15 @@ import OrderStatusSelect from '../Select/OrderStatusSelect';
 
 const AllOrders = () => {
   const { data: orders, isLoading, isSuccess, isError, error } = useGetOrdersQuery();
+
+  const [query, setQuery] = useState('');
+
+  const filteredOrders = orders?.filter(
+    (item) =>
+      item.title.toLowerCase().includes(query.toLowerCase()) ||
+      item.order_status.toLowerCase().includes(query.toLowerCase())
+    // item.orderItems.some((orderItem) => orderItem.product?.toLowerCase().includes(query.toLowerCase()))
+  );
 
   let content;
 
@@ -21,7 +30,7 @@ const AllOrders = () => {
       </TableRow>
     );
   } else if (isSuccess) {
-    content = orders?.map((item) => (
+    content = filteredOrders?.map((item) => (
       <TableRow key={item.order_id}>
         <TableCell className="font-medium w-24 md:w-auto break-words md:break-normal whitespace-normal">
           {item.title}
@@ -50,25 +59,35 @@ const AllOrders = () => {
 
   return (
     <div>
+      <FlexColumn>
+        <input
+          placeholder="Filter orders by title or status..."
+          className="w-11/12 md:w-3/4 border-2 border-sqlBlue p-2 rounded-md mb-2"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </FlexColumn>
       {isError ? (
         <FlexColumn>
           <p className="mt-6">Error fetching orders: {error?.data?.message}</p>
         </FlexColumn>
       ) : (
-        <Table>
-          <TableCaption>A list of all orders.</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-24 md:w-auto">Title</TableHead>
-              <TableHead>Created</TableHead>
-              <TableHead className="hidden md:table-cell">Event Date</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="hidden md:table-cell">Amount</TableHead>
-              <TableHead className="">Link</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>{content}</TableBody>
-        </Table>
+        <>
+          <Table>
+            <TableCaption>A list of all orders.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-24 md:w-auto">Title</TableHead>
+                <TableHead>Created</TableHead>
+                <TableHead className="hidden md:table-cell">Event Date</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="hidden md:table-cell">Amount</TableHead>
+                <TableHead className="">Link</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>{content}</TableBody>
+          </Table>
+        </>
       )}
     </div>
   );

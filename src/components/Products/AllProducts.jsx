@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { useGetProductsQuery } from '../../redux/productApi';
 import PageSpinner from '../Misc/PageSpinner';
@@ -9,7 +9,17 @@ import ProductStatusSelect from '../Select/ProductStatusSelect';
 import { FlexColumn } from '../UI';
 
 const AllProducts = () => {
+  const [query, setQuery] = useState('');
+
   const { data: products, isLoading, isSuccess, isError, error } = useGetProductsQuery();
+
+  const filteredProducts = products?.filter(
+    (item) =>
+      item.product.toLowerCase().includes(query.toLowerCase()) ||
+      item.category.toLowerCase().includes(query.toLowerCase()) ||
+      item.tags.toLowerCase().includes(query.toLowerCase()) ||
+      item.status.toLowerCase().includes(query.toLowerCase())
+  );
 
   let content;
 
@@ -22,7 +32,7 @@ const AllProducts = () => {
       </TableRow>
     );
   } else if (isSuccess) {
-    content = products?.map((item) => (
+    content = filteredProducts?.map((item) => (
       <TableRow
         key={item.product_id}
         className={`${item.status === 'Inactive' ? 'bg-red-100 dark:bg-red-950 hover:bg-red-200' : null}`}
@@ -54,6 +64,14 @@ const AllProducts = () => {
 
   return (
     <div>
+      <FlexColumn>
+        <input
+          placeholder="Filter products by title, category, or status..."
+          className="w-11/12 md:w-3/4 border-2 border-sqlBlue p-2 rounded-md mb-2"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </FlexColumn>
       {isError ? (
         <FlexColumn>
           <p className="mt-6">Error fetching products: {error?.data?.message}</p>
